@@ -10,7 +10,8 @@ class ViewPath
     const BROWSE_PRODUCTS = 'customer-end.product.browse-products';
     const LOGIN = 'customer-end.auth.login';
     const REGISTER = 'customer-end.auth.sign-up';
-     const CART = 'customer-end.cart.cart';
+    const CART = 'customer-end.cart.cart';
+    const PAGE_NOT_FOUND = 'errors.404';
 
 
 }

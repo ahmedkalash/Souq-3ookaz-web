@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Repositories\Web\Customer\CartItemRepository;
 use App\Models\CartItem;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +26,7 @@ class decrementCartItemCountRequest extends FormRequest
      */
     public function rules()
     {
-        return CartItem::decrementItemCountRules();
+        return CartItemRepository::decrementItemCountRules();
     }
 
     public function validationData()

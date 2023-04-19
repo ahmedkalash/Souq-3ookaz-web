@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Http\Rules;
 
 use App\Models\CartItem;
 use Illuminate\Contracts\Validation\Rule;

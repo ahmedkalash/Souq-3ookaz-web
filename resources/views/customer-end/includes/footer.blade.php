@@ -4,7 +4,7 @@
         <div class="service-section">
             <div class="row g-3">
                 <div class="col-12">
-                    <div class="service-contain">
+                        <div class="service-contain">
                         <div class="service-box">
                             <div class="service-image">
                                 <img src="../assets/svg/product.svg" class="blur-up lazyload" alt="">
@@ -84,24 +84,13 @@
 
                     <div class="footer-contain">
                         <ul>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
-                            </li>
+                            @foreach($categories as $category)
+                                <li>
+                                    <a href="{{route('product.showByCategorySlug',$category->slug)}}" class="text-content">{{$category->name_en}}</a>
+                                </li>
+                            @endforeach
+
+
                         </ul>
                     </div>
                 </div>
@@ -114,10 +103,10 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="index.html" class="text-content">Home</a>
+                                <a href="{{route('home.show')}}" class="text-content">Home</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                                <a href="{{route('product.showAll')}}" class="text-content">Shop</a>
                             </li>
                             <li>
                                 <a href="about-us.html" class="text-content">About Us</a>
@@ -249,3 +238,5 @@
     </div>
 </footer>
 <!-- Footer Section End -->
+
+

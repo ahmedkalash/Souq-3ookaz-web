@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Models\Traits\getTableNameStaticallyTrait;
-use App\Rules\DoesProductInUserCartRule;
-use App\Rules\DoesProductStockHasEnoughAmount;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -37,57 +35,6 @@ class CartItem extends Model
     protected $fillable = ['amount', 'product_id', 'user_id'];
 
 
-
-    public static function deleteCartItemRules(){
-        return[
-            'product_id'=>['required','integer',new DoesProductInUserCartRule()]
-        ];
-    }
-    public static function decrementItemCountRules()
-    {
-       return[
-         'product_id'=>['required','integer',new DoesProductInUserCartRule()]
-       ];
-    }
-
-    public static function emptyCurrentUserCart(){
-        CartItem::where('user_id','=',Auth::id())->delete();
-    }
-
-    /***
-     * delete product from cart along with all of its amount
-    */
-    public static function deleteItemFromCurrentUserCart($request){
-          CartItem::where([
-              ['user_id','=',Auth::id()],
-              ['product_id','=',$request->product_id]
-              ])->delete();
-    }
-
-    /**
-     * decrement the amount of an item  or delete the item if its amount is one
-     * */
-    public static function decrementItemFromCurrentUserCart($request)
-    {
-        /***
-         * @var  $cartItem CartItem
-         */
-        $cartItem  = CartItem::where([
-              ['user_id','=',Auth::id()],
-              ['product_id','=',$request->product_id]
-              ])->get()->first();
-
-        if($cartItem->amount>1) {
-            $cartItem->update([
-                'amount' => $cartItem->amount - 1
-            ]);
-        }
-        else{
-            $cartItem->delete();
-        }
-
-
-    }
 
 
 

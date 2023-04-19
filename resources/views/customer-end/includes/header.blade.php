@@ -118,7 +118,7 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                         </button>
-                        <a href="index.html" class="web-logo nav-logo">
+                        <a href="{{route('home.show')}}" class="web-logo nav-logo">
                             <img src="{{asset("assets/images/logo/1.png")}}" class="img-fluid blur-up lazyload" alt="">
                         </a>
 
@@ -185,12 +185,12 @@
                                 </li>
                                 <li class="right-side">
                                     <div class="onhover-dropdown header-badge">
-                                        <button type="button" class="btn p-0 position-relative header-wishlist">
+                                        <a type="button" href="{{route('cart.show')}}" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="shopping-cart"></i>
                                             <span class="position-absolute top-0 start-100 translate-middle badge">{{$cartItems->count()}}
                                                     <span class="visually-hidden">items in cart</span>
                                             </span>
-                                        </button>
+                                        </a>
 
                                         <div class="onhover-div">
                                             <ul class="cart-list">
@@ -312,9 +312,9 @@
                             <ul class="category-list">
                                 @foreach($categories as $category)
                                     <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
+                                        <a href="{{route('product.showByCategorySlug',$category->slug)}}" class="category-name">
                                             <img src="../assets/svg/1/vegetable.svg" alt="">
-                                            <h6>{{$category->name_en}}</h6>
+                                            <h6>{{$category->name_en??null}}</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
 
@@ -322,12 +322,14 @@
                                             @foreach($category->children as $child_1)
                                                 <div class="list-1">
                                                     <div class="category-title-box">
-                                                        <h5>{{$child_1->name_en}}</h5>
+                                                        <h5>
+                                                            <a href="{{route('product.showByCategorySlug',$child_1->slug)}}">{{$child_1->name_en??null}}</a>
+                                                        </h5>
                                                     </div>
                                                     <ul>
                                                         @foreach($child_1->children as $child_2)
                                                             <li>
-                                                                 <a href="javascript:void(0)">{{$child_2->name_en}}</a>
+                                                                 <a href="{{route('product.showByCategorySlug',$child_2->slug)}}">{{$child_2->name_en??null}}</a>
                                                             </li>
                                                         @endforeach
                                                     </ul>

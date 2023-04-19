@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Traits\specifyValidationDataTrait;
+use App\Http\Repositories\Web\Customer\CartItemRepository;
 
-use App\Models\CartItem;
 use Illuminate\Foundation\Http\FormRequest;
 
 class deleteCartItemRequest extends FormRequest
@@ -16,6 +15,7 @@ class deleteCartItemRequest extends FormRequest
      *
      * @return bool
      */
+    protected $stopOnFirstFailure=true;
     public function authorize()
     {
         return true;
@@ -28,7 +28,7 @@ class deleteCartItemRequest extends FormRequest
      */
     public function rules()
     {
-        return CartItem::deleteCartItemRules();
+        return CartItemRepository::deleteCartItemRules();
     }
 
     public function validationData()

@@ -8,7 +8,6 @@ interface CartItemInterface
     public function getCart();
     public function emptyCart();
     public function deleteItem($request);
-
     public function decrementItemCount($request);
 
 }

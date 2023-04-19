@@ -7,25 +7,38 @@ use App\Http\Rules\DoesProductStockHasEnoughAmount;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use App\Http\Rules\DoesProductInUserCartRule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CartItemRepository implements CartItemInterface
 {
 
-    public static function addCartItemRules()
+    public static function addCartItemRules(): array
     {
         return[
             'amount'=>['required', 'integer','gt:0'],
             'product_id'=>['required','integer','exists:products,id', new DoesProductStockHasEnoughAmount()],
         ];
     }
+    public static function deleteCartItemRules(): array
+    {
+        return[
+            'product_id'=>['required','integer',new DoesProductInUserCartRule()]
+        ];
+    }
 
+    public static function decrementItemCountRules(): array
+    {
+        return[
+            'product_id'=>['required','integer',new DoesProductInUserCartRule()]
+        ];
+    }
     /**
      *  adds new product to the cart or increments the amount of the product
      *  if the product already in the cart
      * */
-    public function addProduct($request)
+    public function addProduct($request): void
     {
         $cartItem = CartItem::where([
             ['user_id',auth()->id()],
@@ -46,7 +59,7 @@ class CartItemRepository implements CartItemInterface
 
     }
 
-    public function getCart()
+    public function getCart(): array
     {
         try {
             define("App\Http\Repositories\Web\Customer\prod", 'prod');
@@ -80,29 +93,45 @@ class CartItemRepository implements CartItemInterface
 
     }
 
-    public function emptyCart()
+    public function emptyCart(): void
     {
-        CartItem::emptyCurrentUserCart();
-        return $this->apiResponse(200,'خد',null,CartItem::getCurrentUserCartForShow());
+        CartItem::where('user_id','=',Auth::id())->delete();
     }
 
 
     /***
      * delete product from cart along with all of its amount
      ****/
-    public function deleteItem($request)
+    public function deleteItem($request): void
     {
-        CartItem::deleteItemFromCurrentUserCart($request);
-        return $this->apiResponse(200,'تمام مسحتهولك علي الله يطمر',null,CartItem::getCurrentUserCartForShow());
+        CartItem::where([
+            ['user_id','=',Auth::id()],
+            ['product_id','=',$request->product_id]
+        ])->delete();
+
     }
 
     /**
-     * decrement the amount of an item  or delete the item if its amount is one
+     * decrement the amount of an item by one or delete the item if its amount is one
      * */
-    public function decrementItemCount($request)
+    public function decrementItemCount($request): void
     {
-       CartItem::decrementItemFromCurrentUserCart($request);
-       return $this->apiResponse(200,'تمام مسحتهولك علي الله يطمر',null,CartItem::getCurrentUserCartForShow());
+        /***
+         * @var  $cartItem CartItem
+         */
+        $cartItem  = CartItem::where([
+            ['user_id','=',Auth::id()],
+            ['product_id','=',$request->product_id]
+        ])->get()->first();
+
+        if($cartItem->amount>1) {
+            $cartItem->update([
+                'amount' => $cartItem->amount - 1
+            ]);
+        }
+        else{
+            $cartItem->delete();
+        }
 
     }
 }

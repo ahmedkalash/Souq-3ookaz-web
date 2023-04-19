@@ -58,7 +58,7 @@ Route::controller(ProductController::class)
         Route::get('/{category_slug}/products','showProductsByCategorySlug')
             ->name('product.showByCategorySlug');
 
-        Route::get('/products', 'allProducts');
+        Route::get('/products', 'allProducts')->name('product.showAll');
     });
 
 
@@ -70,11 +70,10 @@ Route::group([
     'prefix'=>'cart'
 ], function (){
     Route::post('/','addProduct')->name('cart.addProduct');
-
-    //--------------
     Route::get('/','getCart')->name('cart.show');
-    Route::delete('/','emptyCart');
-    Route::delete('/product/{product_id}','deleteItem');
+    Route::delete('/','emptyCart')->name('cart.empty');
+    Route::delete('/product/{product_id}','deleteItem')->name('cart.deleteItem');
+    // need ajax
     Route::delete('/product/{product_id}/decrement', 'decrementItemCount');
 });
 

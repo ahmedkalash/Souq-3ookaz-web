@@ -43,27 +43,7 @@
 @section('content')
 
     <!-- Breadcrumb Section Start -->
-    <section class="breadscrumb-section pt-0">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadscrumb-contain">
-                        <h2>Cart</h2>
-                        <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        <i class="fa-solid fa-house"></i>
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('customer-end.includes.breadcrumb-section')
     <!-- Breadcrumb Section End -->
 
     <!-- Cart Section Start -->
@@ -171,7 +151,17 @@
                                         <td class="save-remove">
                                             <h4 class="table-title text-content">Action</h4>
                                             <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                            <a class="remove close_button" href="javascript:void(0)">Remove</a>
+                                           <form action="{{route('cart.deleteItem', $cartItem->product_id)}}" method="post" id="delete-cart-item">
+                                               @method('delete')
+                                               @csrf
+                                               <a class="remove close_button" href="javascript:deleteItem()"  >Remove</a>
+                                               <script>
+                                                   function deleteItem() {
+                                                       document.getElementById("delete-cart-item").submit();
+                                                   }
+                                               </script>
+                                           </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -180,7 +170,22 @@
                             </table>
                         </div>
                     </div>
+                    <li>
+
+                        <form action="{{route('cart.empty')}}" method="post"  >
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-animation proceed-btn fw-bold">
+                                Clear The Cart
+                            </button>
+                        </form>
+
+
+                    </li>
                 </div>
+
+
+
 
                 <div class="col-xxl-3">
                     <div class="summery-box p-sticky">
@@ -522,4 +527,6 @@
 
     <!-- theme setting js -->
     <script src="../assets/js/theme-setting.js"></script>
+    <script src="../assets/js/new/delete-cart-item.js"></script>
+
 @endsection

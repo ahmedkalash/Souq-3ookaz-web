@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
-    <title>Browse Products</title>
+    <title>{{$category->name_en?? 'Browse Products'}}</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,27 +42,7 @@
 @section('content')
 
     <!-- Breadcrumb Section Start -->
-    <section class="breadscrumb-section pt-0">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadscrumb-contain">
-                        <h2>Shop Right Sidebar</h2>
-                        <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        <i class="fa-solid fa-house"></i>
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Shop Right Sidebar</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('customer-end.includes.breadcrumb-section')
     <!-- Breadcrumb Section End -->
 
     <!-- Category Section Start -->
@@ -71,122 +51,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="slider-7_1 no-space shop-box no-arrow">
+                        @foreach($categories as $category)
                         <div>
                             <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
+                                <a href="{{route('product.showByCategorySlug', $category->slug)}}">
                                     <div class="shop-category-image">
-                                        <img src="../assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                        <img src="{{$category->icon_url}}" class="blur-up lazyload" alt="">
                                     </div>
                                     <div class="category-box-name">
-                                        <h6>Vegetables & Fruit</h6>
+                                        <h6>{{$category->name_en}}</h6>
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                        </div>@endforeach
 
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Beverages</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/meats.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Meats & Seafood</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Breakfast</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Frozen Foods</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/milk.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Milk & Dairies</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/pet.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Pet Food</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/biscuit.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Biscuits & Snacks</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="shop-category-box">
-                                <a href="shop-left-sidebar.html">
-                                    <div class="shop-category-image">
-                                        <img src="../assets/svg/1/grocery.svg" class="blur-up lazyload" alt="">
-                                    </div>
-                                    <div class="category-box-name">
-                                        <h6>Grocery & Staples</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -974,8 +852,7 @@
                     </div>
 
                     {{-----------------------------------}}
-                    <div
-                        class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
+                    <div class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
 
                         @foreach($products as $product)
                         <div>
@@ -989,7 +866,7 @@
 
                                         <ul class="product-option">
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="{{route('product.showByID', $product->id)}}" data-bs-toggle="modal"
+                                                <a href="javascript:void(0)" data-bs-toggle="modal"
                                                     data-bs-target="#view">
                                                     <i data-feather="eye"></i>
                                                 </a>

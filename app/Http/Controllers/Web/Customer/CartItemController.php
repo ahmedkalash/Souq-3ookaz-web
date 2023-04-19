@@ -10,6 +10,7 @@ use App\Http\Requests\addCartItemRequest;
 use App\Http\Requests\decrementCartItemCountRequest;
 use App\Http\Requests\deleteCartItemRequest;
 use App\View\ViewPath;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use function App\Http\Helper\cartItems;
 
@@ -19,7 +20,6 @@ class CartItemController extends Controller
         protected CartItemInterface $cartItemRepository,
     ){}
     public function addProduct(addCartItemRequest $request){
-         //dd($request);
          $this->cartItemRepository->addProduct($request);
          Alert::success('success','ضيفتهالك علي الله تشتري بقي');
          return redirect()->back();
@@ -31,22 +31,28 @@ class CartItemController extends Controller
             ViewPath::CART,
             mergeData: $useCart
         );
-
-    }
-    public function emptyCart(){
-         return $this->cartItem->emptyCart();
-
     }
 
-     public function deleteItem(deleteCartItemRequest $request){
-        return $this->cartItem->deleteItem($request);
+    public function deleteItem(deleteCartItemRequest $request){
+        $this->cartItemRepository->deleteItem($request);
+        Alert::success('success','تمام مسحتهولك');
+        return redirect()->back();
+    }
+
+    public function emptyCart(Request $request){
+        $this->cartItemRepository->emptyCart();
+        Alert::success('تمام','مسحتهالك ليه بس كدا الخساره دي');
+        return redirect()->back();
     }
 
    /**
     * decrement the amount of an item  or delete the item if its amount is one
     * */
     public function decrementItemCount(decrementCartItemCountRequest $request){
-        return $this->cartItem->decrementItemCount($request);
+        // need ajax
+        $this->cartItemRepository->decrementItemCount($request);
+        return ;
+
     }
 
 
