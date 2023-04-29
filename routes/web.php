@@ -6,7 +6,10 @@ use App\Http\Controllers\Web\Customer\Auth\RegisterController;
 use App\Http\Controllers\Web\Customer\CartItemController;
 use App\Http\Controllers\Web\Customer\HomePageController;
 use App\Http\Controllers\Web\Customer\ProductController;
+use App\Http\Controllers\Web\Customer\ProductReviewController;
 use App\Http\Controllers\Web\TestController;
+use App\Http\Middleware\Customer\IsCustomerOrGuest;
+use App\Http\Middleware\LogoutFromCurrentRole;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomePageController::class,'showHomePage'])->name('home.show');
+Route::get('/', [HomePageController::class, 'showHomePage'])->name('home.show');
 
 Route::group(['middleware'=>RedirectIfAuthenticated::class],function (){
 
@@ -32,8 +35,9 @@ Route::group(['middleware'=>RedirectIfAuthenticated::class],function (){
     });
 
      Route::group(['prefix'=>'login','controller'=>LoginController::class],function (){
-         Route::get('/', 'showLoginPage')->name('login.show') ;
-         Route::post('/', 'login')->name('login') ;
+         Route::get('/', 'showLoginPage')->name('login.show');
+         Route::post('/', 'login')->name('login')
+         ->middleware(LogoutFromCurrentRole::class);
     });
 
 });
@@ -61,6 +65,13 @@ Route::controller(ProductController::class)
         Route::get('/products', 'allProducts')->name('product.showAll');
     });
 
+// reviews
+\Route::controller(ProductReviewController::class)
+    ->middleware('auth')
+    ->group(function (){
+        Route::post('/product/{product_id}/review','addReview')->name('review.add');
+    });
+
 
 
 // shopping cart
@@ -81,3 +92,6 @@ Route::group([
 
 
 Route::get('test',[TestController::class, 'index']);
+
+
+

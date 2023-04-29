@@ -9,4 +9,5 @@
     @include('customer-end.includes.footer')
     @include('sweetalert::alert')
     </body>
+
 </html>

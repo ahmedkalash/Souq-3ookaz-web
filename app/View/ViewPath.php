@@ -14,4 +14,5 @@ class ViewPath
     const PAGE_NOT_FOUND = 'errors.404';
 
 
+
 }

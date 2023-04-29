@@ -182,6 +182,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\AdminRepositoryServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -205,6 +206,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'admin'=>App\Http\Middleware\Admin\IsAdmin::class
     ])->toArray(),
 
 ];

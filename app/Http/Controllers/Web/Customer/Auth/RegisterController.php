@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web\Customer\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\Web\Auth\RegisterInterface;
+use App\Http\Interfaces\Web\Customer\Auth\RegisterInterface;
 use App\Http\Interfaces\Web\Customer\CategoryInterface;
 use App\Http\Requests\Web\Customer\Auth\RegisterRequest;
 use App\Providers\RouteServiceProvider;

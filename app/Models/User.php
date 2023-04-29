@@ -41,6 +41,12 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @property string $role
+ * @property string $image_url
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereImageUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -58,7 +64,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        'phone'
+        'phone',
+        'role'
     ];
 
     /**
@@ -79,5 +86,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->role=='admin';
+    }
+
+    public function isCustomer()
+    {
+        return $this->role=='customer';
+    }
+
+
 
 }

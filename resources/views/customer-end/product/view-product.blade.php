@@ -100,31 +100,17 @@
                                             class="offer theme-color">(8% off)</span></h3>
                                     <div class="product-rating custom-rate">
                                         <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
+                                            @include('customer-end.includes.product-average-rating')
                                         </ul>
-                                        <span class="review">23 Customer Review</span>
+                                        <span class="review">{{$product->reviews->count()}} Customer Review</span>
                                     </div>
                                 </div>
 
                                 <div class="procuct-contain">
-                                    <p>{{$product->description??''}}</p>
+                                    <p> {!! $product->description??'' !!}  </p>
                                 </div>
 
-                                <div class="product-packege">
+                               {{-- <div class="product-packege">
                                     <div class="product-title">
                                         <h4>Weight</h4>
                                     </div>
@@ -145,9 +131,9 @@
                                             <a href="javascript:void(0)">With Pink Roses</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>--}}
 
-                                <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
+                             {{--   <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                     data-hours="1" data-minutes="2" data-seconds="3">
                                     <div class="product-title">
                                         <h4>Hurry up! Sales Ends In</h4>
@@ -186,7 +172,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>--}}
 
                                 <form action="{{route('cart.addProduct')}}" method="post">
                                     @csrf
@@ -205,8 +191,7 @@
                                         </div>
                                     </div>
                                         <input type="hidden" value="{{$product->id}}" name="product_id">
-                                        <button {{--onclick="location.href = 'cart.html';"--}} type="submit"
-                                                class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                        <button  type="submit" class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
                                 </div>
                                     @error('product_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -227,27 +212,27 @@
                                     </a>
                                 </div>
 
-                                <div class="pickup-box">
-                                    <div class="product-title">
-                                        <h4>Store Information</h4>
-                                    </div>
+{{--                                <div class="pickup-box">--}}
+{{--                                    <div class="product-title">--}}
+{{--                                        <h4>Store Information</h4>--}}
+{{--                                    </div>--}}
 
-                                    <div class="pickup-detail">
-                                        <h4 class="text-content">Lollipop cake chocolate chocolate cake dessert jujubes.
-                                            Shortbread sugar plum dessert powder cookie sweet brownie.</h4>
-                                    </div>
+{{--                                    <div class="pickup-detail">--}}
+{{--                                        <h4 class="text-content">Lollipop cake chocolate chocolate cake dessert jujubes.--}}
+{{--                                            Shortbread sugar plum dessert powder cookie sweet brownie.</h4>--}}
+{{--                                    </div>--}}
 
-                                    <div class="product-info">
-                                        <ul class="product-info-list product-info-list-2">
-                                            <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
-                                            <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
-                                            <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                            <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>
-                                            <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
-                                                    href="javascript:void(0)">Backery</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+{{--                                    <div class="product-info">--}}
+{{--                                        <ul class="product-info-list product-info-list-2">--}}
+{{--                                            <li>Type : <a href="javascript:void(0)">Black Forest</a></li>--}}
+{{--                                            <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>--}}
+{{--                                            <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>--}}
+{{--                                            <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>--}}
+{{--                                            <li>Tags : <a href="javascript:void(0)">Cake,</a> <a--}}
+{{--                                                    href="javascript:void(0)">Backery</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="paymnet-option">
                                     <div class="product-title">
@@ -463,24 +448,10 @@
                                                     <div class="d-flex">
                                                         <div class="product-rating">
                                                             <ul class="rating">
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
+                                                                @include('customer-end.includes.product-average-rating')
                                                             </ul>
                                                         </div>
-                                                        <h6 class="ms-3">4.2 Out Of 5</h6>
+                                                        <h6 class="ms-3">{{$product->reviews->average_rating}} Out Of 5</h6>
                                                     </div>
 
                                                     <div class="rating-box">
@@ -490,9 +461,9 @@
                                                                     <h5>5 Star</h5>
                                                                     <div class="progress">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                            style="width: 68%" aria-valuenow="100"
+                                                                            style="width: {{$product->reviews->percentages[5]??0}}%" aria-valuenow="100"
                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            68%
+                                                                            {{$product->reviews->percentages[5]??0}}%
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -503,9 +474,9 @@
                                                                     <h5>4 Star</h5>
                                                                     <div class="progress">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                            style="width: 67%" aria-valuenow="100"
+                                                                            style="width: {{$product->reviews->percentages[4]??0}}%" aria-valuenow="100"
                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            67%
+                                                                            {{$product->reviews->percentages[4]??0}}%
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -516,9 +487,9 @@
                                                                     <h5>3 Star</h5>
                                                                     <div class="progress">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                            style="width: 42%" aria-valuenow="100"
+                                                                            style="width: {{$product->reviews->percentages[3]??0}}%" aria-valuenow="100"
                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            42%
+                                                                            {{$product->reviews->percentages[3]??0}}%
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -529,9 +500,9 @@
                                                                     <h5>2 Star</h5>
                                                                     <div class="progress">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                            style="width: 30%" aria-valuenow="100"
+                                                                            style="width: {{$product->reviews->percentages[2]??0}}%" aria-valuenow="100"
                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            30%
+                                                                            {{$product->reviews->percentages[2]??0}}%
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -542,9 +513,9 @@
                                                                     <h5>1 Star</h5>
                                                                     <div class="progress">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                            style="width: 24%" aria-valuenow="100"
+                                                                            style="width: {{$product->reviews->percentages[1]??0}}%" aria-valuenow="100"
                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            24%
+                                                                            {{$product->reviews->percentages[1]??0}}%
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -558,224 +529,91 @@
                                                         <h4 class="fw-500">Add a review</h4>
                                                     </div>
 
-                                                    <div class="row g-4">
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="text" class="form-control" id="name"
-                                                                    placeholder="Name">
-                                                                <label for="name">Your Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="email" class="form-control" id="email"
-                                                                    placeholder="Email Address">
-                                                                <label for="email">Email Address</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="website"
-                                                                    placeholder="Website">
-                                                                <label for="website">Website</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="review1"
-                                                                    placeholder="Give your review a title">
-                                                                <label for="review1">Review Title</label>
-                                                            </div>
-                                                        </div>
 
                                                         <div class="col-12">
-                                                            <div class="form-floating theme-form-floating">
+                                                            <form method="post" action="{{route('review.add',$product->id)}}">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating theme-form-floating">
+                                                                        <input type="number" class="form-control" id="rating" placeholder="Your Rating" name="rating" value="{{$product->reviews->where('user_id',\Auth::id())->first()->rating ?? null}}">
+                                                                        <label for="rating">Your Rating</label>
+                                                                        @error('rating')
+                                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-floating theme-form-floating">
                                                                 <textarea class="form-control"
-                                                                    placeholder="Leave a comment here"
-                                                                    id="floatingTextarea2"
-                                                                    style="height: 150px"></textarea>
-                                                                <label for="floatingTextarea2">Write Your
-                                                                    Comment</label>
-                                                            </div>
+                                                                          placeholder="Leave a comment here"
+                                                                          id="floatingTextarea2"
+                                                                          style="height: 150px"
+                                                                          name="comment">{{$product->reviews->where('user_id',\Auth::id())->first()->comment?? null}}</textarea>
+                                                                    <label for="floatingTextarea2">Write Your Comment</label>
+                                                                    @error('comment')
+                                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                                <button  type="submit" class="btn btn-md bg-dark cart-button text-white w-100">Comment</button>
+                                                            </form>
+
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12">
+                                                    <br>
                                                     <div class="review-title">
-                                                        <h4 class="fw-500">Customer questions & answers</h4>
+                                                        <h4 class="fw-500">Customers Reviews</h4>
                                                     </div>
 
                                                     <div class="review-people">
                                                         <ul class="review-list">
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/1.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Tracey</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">14 Jan, 2022 at
-                                                                                12.58 AM</h6>
-
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
+                                                            @foreach($product->reviews as $review)
+                                                                <li>
+                                                                    <div class="people-box">
+                                                                        <div>
+                                                                            <div class="people-image">
+                                                                                <img src="{{$review->user->image_url}}"
+                                                                                     class="img-fluid blur-up lazyload"
+                                                                                     alt="">
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="reply">
-                                                                            <p>Icing cookie carrot cake chocolate cake
-                                                                                sugar plum jelly-o danish. Dragée dragée
-                                                                                shortbread tootsie roll croissant muffin
-                                                                                cake I love gummi bears. Candy canes ice
-                                                                                cream caramels tiramisu marshmallow cake
-                                                                                shortbread candy canes cookie.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                                        <div class="people-comment">
+                                                                            <a class="name"
+                                                                               href="javascript:void(0)">{{$review->user->first_name.' '.$review->user->last_name}}</a>
+                                                                            <div class="date-time">
+                                                                                <h6 class="text-content">{{$review->updated_at}}</h6>
 
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/2.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
+                                                                                <div class="product-rating">
+                                                                                    <ul class="rating">
+                                                                                        @for($i=1;$i<=5;$i++)
+                                                                                            @if($i<=$review->rating)
+                                                                                                <li>
+                                                                                                    <i data-feather="star" class="fill"></i>
+                                                                                                </li>
+                                                                                            @else
+                                                                                                <li>
+                                                                                                    <i data-feather="star"></i>
+                                                                                                </li>
+                                                                                            @endif
+                                                                                        @endfor
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
 
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Olivia</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">01 May, 2022 at
-                                                                                08.31 AM</h6>
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
+                                                                            <div class="reply">
+                                                                                <p>{{$review->comment??null}}
+                                                                                    <a href="javascript:void(0)">Reply</a>
+                                                                                </p>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Tootsie roll cake danish halvah powder
-                                                                                Tootsie roll candy marshmallow cookie
-                                                                                brownie apple pie pudding brownie
-                                                                                chocolate bar. Jujubes gummi bears I
-                                                                                love powder danish oat cake tart
-                                                                                croissant.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
+                                                                </li>
+                                                            @endforeach
 
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/3.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Gabrielle</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">21 May, 2022 at
-                                                                                05.52 PM</h6>
-
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Biscuit chupa chups gummies powder I love
-                                                                                sweet pudding jelly beans. Lemon drops
-                                                                                marzipan apple pie gingerbread macaroon
-                                                                                croissant cotton candy pastry wafer.
-                                                                                Carrot cake halvah I love tart caramels
-                                                                                pudding icing chocolate gummi bears.
-                                                                                Gummi bears danish cotton candy muffin
-                                                                                marzipan caramels awesome feel. <a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -846,7 +684,7 @@
                         </div>
 
                         <!-- Trending Product -->
-                        <div class="pt-25">
+                       {{-- <div class="pt-25">
                             <div class="category-menu">
                                 <h3>Trending Products</h3>
 
@@ -928,10 +766,11 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>--}}
+                        <!---------------------->
 
                         <!-- Banner Section -->
-                        <div class="ratio_156 pt-25">
+                     {{--   <div class="ratio_156 pt-25">
                             <div class="home-contain">
                                 <img src="../assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
                                     alt="">
@@ -947,7 +786,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
+                        <!---------------------->
                     </div>
                 </div>
             </div>
@@ -1797,6 +1637,7 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <div>
                         <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
@@ -1806,6 +1647,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <div class="deal-offer-box">
                         <ul class="deal-offer-list">
