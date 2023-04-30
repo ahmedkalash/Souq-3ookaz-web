@@ -16,7 +16,14 @@ return new class extends Migration
         Schema::create('product_infos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('product_id');
+            $table->string('key');
+            $table->string('value');
+
+            $table->foreign('product_id')->references('id')->on(\App\Models\Product::getTableName())
+                ->cascadeOnUpdate()->cascadeOnDelete();
         });
+
     }
 
     /**

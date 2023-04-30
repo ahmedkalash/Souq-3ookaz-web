@@ -62,9 +62,6 @@ use Staudenmeir\LaravelCte\Eloquent\QueriesExpressions;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category withGlobalScopes(array $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
- * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $child
- * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $children
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $ancestors The model's recursive parents.
  * @property-read int|null $ancestors_count
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $ancestorsAndSelf The model's recursive parents and itself.
@@ -84,8 +81,6 @@ use Staudenmeir\LaravelCte\Eloquent\QueriesExpressions;
  * @property-read int|null $siblings_count
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $siblingsAndSelf All the parent's children.
  * @property-read int|null $siblings_and_self_count
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @mixin \Eloquent
  */
 class Category extends Model

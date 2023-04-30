@@ -3,12 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use App\Models\ProductReview;
-use App\Models\User;
+use App\Models\ProductInfo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
-class ProductReviewSeeder extends Seeder
+class ProductInfoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,15 +16,13 @@ class ProductReviewSeeder extends Seeder
      */
     public function run()
     {
-        $faker = FakerFactory::create();
+       $faker = \Faker\Factory::create();
         for($i=0;$i<200;$i++){
-        ProductReview::create( [
+        ProductInfo::create( [
             'product_id' => Product::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
-            'rating' => $faker->numberBetween(1, 5),
-            'comment' => $faker->paragraph(),
+            'key' => $faker->word(),
+            'value' => $faker->word(),
             ]);
          }
-
     }
 }

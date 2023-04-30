@@ -64,6 +64,7 @@ class Product extends Model
     const CATEGORY = 'category';
     const IMAGES = 'images';
     const REVIEWS = 'reviews';
+    const INFO = 'info';
     public static function getAllForShow(): array
     {
         $allProducts = Product::with([static::POSTER])->get([

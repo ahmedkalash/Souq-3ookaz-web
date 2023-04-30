@@ -4,6 +4,7 @@ namespace App\Models\Traits;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\ProductInfo;
 use App\Models\ProductReview;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,9 +23,13 @@ trait ProductRelationshipsTrait
         return $this->hasMany(Image::class);
     }
 
-     public function reviews(){
+    public function reviews(){
         return $this->hasMany(ProductReview::class);
     }
+    public function info(){
+        return $this->hasMany(ProductInfo::class);
+    }
+
 
 
 

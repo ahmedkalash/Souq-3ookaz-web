@@ -32,10 +32,11 @@ class ProductRepository implements ProductInterface
         $product = Product::with([
             Product::IMAGES => function($query) {$query->select('product_id', 'url');},
             Product::CATEGORY => function($query) {$query->select('categories.id', 'name_en');},
-            Product::REVIEWS
+            Product::REVIEWS,
+            Product::INFO
         ])->select('id', 'name_en','name_ar', 'price',
             'stock', 'description', 'brand', 'status',
-            'category_id','stock','slug'
+            'category_id','stock','slug','long_description'
         )->where('products.id', $id)->first();
 
         $product->reviews->average_rating =number_format( $product->reviews->average('rating')??0, 2);
@@ -48,6 +49,7 @@ class ProductRepository implements ProductInterface
         $product->reviews->groupBy('user_id');
 
         return $product;
+
     }
 
     public function getProductBySlug($request, $slug)

@@ -12,6 +12,7 @@ use App\Http\Requests\Web\Customer\Product\GetProductBySlugRequest;
 use App\Http\Requests\Web\Customer\Product\GetProductsByCategoryIDRequest;
 use App\Http\Requests\Web\Customer\Product\GetProductsByCategorySlugRequest;
 use App\Models\Category;
+use App\Models\ProductInfo;
 use App\Models\ProductReview;
 use App\View\ViewPath;
 use function App\Http\Helper\cartItems;
