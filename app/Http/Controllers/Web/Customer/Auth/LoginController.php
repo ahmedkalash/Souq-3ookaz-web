@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Web\Customer\Auth;
 
 use App\Http\Controllers\Controller;
-
-use App\Http\Interfaces\Web\Auth\LoginInterface;
+use App\Http\Interfaces\Web\Customer\Auth\LoginInterface;
 use App\Http\Interfaces\Web\Customer\CategoryInterface;
 use App\Http\Requests\Web\Customer\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\View\ViewPath;
 use function App\Http\Helper\cartItems;
+
 class LoginController extends Controller
 {
     public function __construct(

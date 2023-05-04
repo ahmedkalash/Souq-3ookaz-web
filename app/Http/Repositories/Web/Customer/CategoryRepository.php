@@ -4,17 +4,25 @@ namespace App\Http\Repositories\Web\Customer;
 use App\Http\Interfaces\Web\Customer\CategoryInterface;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Collection;
+
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class CategoryRepository implements CategoryInterface
 {
+    protected Collection $categoryAdjacencyList;
+    public function __construct()
+    {
+        $this->categoryAdjacencyList =  Category::all()->groupBy('parent_id');
+    }
+
     public static function validateCategoryIdRules()
     {
         return [
             'id'=>'exists:categories,id'
         ];
     }
-
     public static function validateCategorySlugRules()
     {
         return [
@@ -22,54 +30,55 @@ class CategoryRepository implements CategoryInterface
         ];
     }
 
-    public function getAllCategoriesHierarchy(): Collection
+    public function getAllCategoriesHierarchy(): ?Collection
     {
-        $rootCategories = Category::whereNull('parent_id')->get();
-        foreach ($rootCategories as /** @var Category $rootCategory */ &$rootCategory) {
-            $rootCategory->children = $this->getCategoryChildren($rootCategory->id);
+        $rootCategories = $this->categoryAdjacencyList->get(null);
+        foreach ($rootCategories as $rootCategory){
+            $this->nestCategoryChildren($rootCategory);
         }
         return $rootCategories;
     }
 
-    public function getCategoryChildren(int $Category_id):Collection|null
+    public function nestCategoryChildren(Category &$category): void
     {
-        // TODO Optimize it by writing a sql recursive query
-
-        $children = Category::where('parent_id','=',$Category_id)->get();
-        foreach ($children as &$child){
-            $child->children = $this->getCategoryChildren($child->id);
-        }
-        return $children;
+        $category->children = $this->categoryAdjacencyList->get($category->id, new Collection);
+            foreach ($category->children as &$category) {
+                $this->nestCategoryChildren($category);
+            }
     }
 
     public function getLeafCategoriesByID(int $Category_id, array &$leafCategories_ids):void
     {
-        $children = Category::where('parent_id','=',$Category_id)->get();
-
-        if($children->count()==0){
+        $categoryChildren = $this->categoryAdjacencyList->get($Category_id);
+        if($categoryChildren){
+            foreach ($categoryChildren as $child){
+                $this->getLeafCategoriesByID($child->id,$leafCategories_ids);
+            }
+        }else {
             $leafCategories_ids[]=$Category_id;
         }
-        foreach ($children as $child) {
-            $this->getLeafCategoriesByID($child->id, $leafCategories_ids);
-        }
+
     }
     public function getLeafCategoriesBySlug(string $Category_Slug, array &$leafCategories_ids):void
     {
-        $category_id = Category::where(
-            'slug', $Category_Slug)->get()->first()->id;
+        $category_id = Category::where('slug', $Category_Slug)->get()->first()->id;
 
         $this->getLeafCategoriesByID($category_id, $leafCategories_ids);
     }
-    public function getAllCategoryProducts(int $Category_id): Collection
+
+    public function getAllLeafCategories():Collection
     {
-        $leafCategories_id=[];
-        $this->getLeafCategoriesByID($Category_id,$leafCategories_id);
-
-        return Product::with(Product::POSTER, Product::CATEGORY)
-            ->
-        whereIn('category_id', $leafCategories_id)->get();
-
+        $allLeafCategories= new Collection();
+        foreach ($this->categoryAdjacencyList as $categories){
+            foreach ($categories as $category){
+                if(!$this->categoryAdjacencyList->offsetExists($category->id)){
+                    $allLeafCategories->push($category);
+                }
+            }
+        }
+        return $allLeafCategories;
     }
+
 
 
 }

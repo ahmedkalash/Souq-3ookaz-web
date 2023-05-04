@@ -60,18 +60,18 @@
 
                                         <td class="product-detail">
                                             <div class="product border-0">
-                                                <a href="product-left-thumbnail.html" class="product-image">
+                                                <a href="{{route('product.showByID',$cartItem->product_id)}}" class="product-image">
                                                     <img src="{{$cartItem->poster}}"
                                                          class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <div class="product-detail">
                                                     <ul>
                                                         <li class="name">
-                                                            <a href="product-left-thumbnail.html">{{$cartItem->name_en}}</a>
+                                                            <a href="{{route('product.showByID',$cartItem->product_id)}}">{{$cartItem->name_en}}</a>
                                                         </li>
 
-                                                        <li class="text-content"><span class="text-title">Sold
-                                                                By:</span> Fresho
+                                                        {{--<li class="text-content"><span class="text-title">SoldBy:</span> Fresho--}}
+
                                                         </li>
 
                                                         <li class="text-content"><span
@@ -81,7 +81,7 @@
                                                         <li>
                                                             <h5 class="text-content d-inline-block">Price :</h5>
                                                             <span>{{$cartItem->unit_price}}</span>
-                                                            <span class="text-content">$45.68</span>
+
                                                         </li>
 
                                                         <li>
@@ -118,9 +118,9 @@
                                         <td class="price">
                                             <h4 class="table-title text-content">Price</h4>
                                             <h5>${{$cartItem->unit_price}}
-                                                <del class="text-content">$45.68</del>
+                                                {{--<del class="text-content">$45.68</del>--}}
                                             </h5>
-                                            <h6 class="theme-color">You Save : $20.68</h6>
+                                           {{-- <h6 class="theme-color">You Save : $20.68</h6>--}}
                                         </td>
 
                                         <td class="quantity">
@@ -193,6 +193,7 @@
                             <h3>Cart Total</h3>
                         </div>
 
+                       {{--
                         <div class="summery-contain">
                             <div class="coupon-cart">
                                 <h6 class="text-content mb-2">Coupon Apply</h6>
@@ -219,18 +220,19 @@
                                 </li>
                             </ul>
                         </div>
+                                    --}}
 
                         <ul class="summery-total">
                             <li class="list-total border-top-0">
                                 <h4>Total (USD)</h4>
-                                <h4 class="price theme-color">$132.58</h4>
+                                <h4 class="price theme-color">${{$total_price}}</h4>
                             </li>
                         </ul>
 
                         <div class="button-group cart-button">
                             <ul>
                                 <li>
-                                    <button onclick="location.href = 'checkout.html';"
+                                    <button onclick="location.href = '{{route('checkout.show')}}';"
                                             class="btn btn-animation proceed-btn fw-bold">Process To Checkout
                                     </button>
                                 </li>

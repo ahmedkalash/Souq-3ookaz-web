@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Http\Interfaces\Web as WebInterfaces;
 use App\Http\Repositories\Web as WebRepositories;
-
 use Illuminate\Support\ServiceProvider;
 
 
@@ -17,7 +16,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
       $this->bindWeb();;
     }
 
@@ -32,6 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
     }
 
     public function bindWeb(){
+
         $this->bindAuth();
         $this->bindHomePage();
         $this->bindCategory();
@@ -41,16 +40,16 @@ class RepositoryServiceProvider extends ServiceProvider
 
     public function bindAuth(){
         $this->app->bind(
-            WebInterfaces\Auth\RegisterInterface::class,
-            WebRepositories\Auth\RegisterRepository::class
+            WebInterfaces\Customer\Auth\RegisterInterface::class,
+            WebRepositories\Customer\Auth\RegisterRepository::class
         );
         $this->app->bind(
-            WebInterfaces\Auth\LoginInterface::class,
-            WebRepositories\Auth\LoginRepository::class
+            WebInterfaces\Customer\Auth\LoginInterface::class,
+            WebRepositories\Customer\Auth\LoginRepository::class
         );
         $this->app->bind(
-            WebInterfaces\Auth\LogoutInterface::class,
-            WebRepositories\Auth\LogoutRepository::class
+            WebInterfaces\Customer\Auth\LogoutInterface::class,
+            WebRepositories\Customer\Auth\LogoutRepository::class
         );
     }
 

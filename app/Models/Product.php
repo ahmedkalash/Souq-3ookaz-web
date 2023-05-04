@@ -45,6 +45,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereStock($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Product findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  * @mixin \Eloquent
  */
 class Product extends Model
@@ -54,13 +57,15 @@ class Product extends Model
     use Sluggable;
     protected $fillable = [
         'name_en', 'name_ar', 'price', 'stock', 'description',
-        'brand', 'status', 'category_id', 'poster_id','slug'
+        'brand', 'status', 'category_id', 'poster_id','slug',
+        'long_description'
     ];
     protected $hidden=[ 'created_at','updated_at','category_id','poster_id'];
     const POSTER = 'poster';
     const CATEGORY = 'category';
     const IMAGES = 'images';
-
+    const REVIEWS = 'reviews';
+    const INFO = 'info';
     public static function getAllForShow(): array
     {
         $allProducts = Product::with([static::POSTER])->get([

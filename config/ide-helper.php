@@ -168,6 +168,7 @@ return [
 
     'model_hooks' => [
         // App\Support\IdeHelper\MyModelHook::class
+        \Staudenmeir\LaravelAdjacencyList\IdeHelper\RecursiveRelationsHook::class
     ],
 
     /*

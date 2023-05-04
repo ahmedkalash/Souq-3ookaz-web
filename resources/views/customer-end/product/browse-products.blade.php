@@ -895,23 +895,19 @@
                                         <p class="text-content mt-1 mb-2 product-content">{{$product->description ?? null}}</p>
                                         <div class="product-rating mt-2">
                                             <ul class="rating">
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" ></i>
-                                                </li>
+                                                @for($i=1;$i<=5;$i++)
+                                                    @if($i<=$product->reviews->average_rating)
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <i data-feather="star"></i>
+                                                        </li>
+                                                    @endif
+                                                @endfor
                                             </ul>
-                                            <span>(4.0)</span>
+                                            <span>({{ $product->reviews->average_rating }})</span>
                                         </div>
                                         <h6 class="unit">250 ml</h6>
                                         <h5 class="price"><span class="theme-color">${{$product->price}}</span> <del>$15.15</del>
