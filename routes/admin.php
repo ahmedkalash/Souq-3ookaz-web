@@ -30,53 +30,34 @@ Route::group(['middleware'=>RedirectIfAuthenticated::class],function (){
 
 Route::post('/logout',[AuthController::class, 'logout'])->name('admin.logout');
 
-Route::get('/profile',[ProfileController::class, 'showProfile'])->name('admin.profile.show');
-Route::post('/profile',[ProfileController::class, 'updateProfile'])->name('admin.profile.update');
+Route::controller(ProfileController::class)
+    ->group(function (){
+        Route::get('/profile','showProfile')->name('admin.profile.show');
+        Route::post('/profile', 'updateProfile')->name('admin.profile.update');
+    });
 
+Route::controller(\App\Http\Controllers\Web\Admin\ProductController::class)
+    ->group(function (){
+        Route::get('/products/products-list','showProductList')->name('admin.productList.show');
+        Route::delete('/products/{product_id}','deleteProduct')->name('admin.product.delete');
+        Route::get('/products/add-product','showAddProduct')->name('admin.product.add.show');
+        Route::post('/products','addProduct')->name('admin.product.add.store');
+        Route::get('/products/product-review','showProductReview')->name('admin.product.review.show');
+        Route::delete('/products/product-review/{product_review_id}','deleteProductReview')->name('admin.product.review.delete');
+    });
 
+Route::controller(\App\Http\Controllers\Web\Admin\CategoryController::class)
+    ->group(function (){
+        Route::get('/category/category-list','showCategoryList')->name('admin.categoryList.show');
+        Route::delete('/category/{category_id}','deleteCategory')->name('admin.category.delete');
+        Route::get('/category/add-category','showAddCategory')->name('admin.category.add.show');
+        Route::post('/category/add-category','AddCategory')->name('admin.category.add.store');
+    });
 
-
-
-
-//
-//
-//
-//// products
-//Route::controller(ProductController::class)
-//    ->group(function (){
-//        Route::get('/products/{product_id}','showProductById')
-//            ->where('product_id', '[0-9]+')->name('product.showByID') ;
-//        Route::get('/products/{product_slug}', 'showProductBySlug')
-//            ->name('product.showBySlug');
-//
-//        Route::get('/{category_id}/products', 'showProductsByCategoryID')
-//            ->where('category_id', '[0-9]+')->name('product.showByCategoryID');
-//        Route::get('/{category_slug}/products','showProductsByCategorySlug')
-//            ->name('product.showByCategorySlug');
-//
-//        Route::get('/products', 'allProducts')->name('product.showAll');
-//    });
-//
-//
-//
-//// shopping cart
-//Route::group([
-//    'middleware'=>'auth',
-//    'controller'=>CartItemController::class,
-//    'prefix'=>'cart'
-//], function (){
-//    Route::post('/','addProduct')->name('cart.addProduct');
-//    Route::get('/','getCart')->name('cart.show');
-//    Route::delete('/','emptyCart')->name('cart.empty');
-//    Route::delete('/product/{product_id}','deleteItem')->name('cart.deleteItem');
-//    // need ajax
-//    Route::delete('/product/{product_id}/decrement', 'decrementItemCount');
-//});
 
 
 
 
 Route::get('test',[TestController::class, 'index']);
-
 
 

@@ -61,10 +61,22 @@ class CategoryRepository implements CategoryInterface
     }
     public function getLeafCategoriesBySlug(string $Category_Slug, array &$leafCategories_ids):void
     {
-        $category_id = Category::where(
-            'slug', $Category_Slug)->get()->first()->id;
+        $category_id = Category::where('slug', $Category_Slug)->get()->first()->id;
 
         $this->getLeafCategoriesByID($category_id, $leafCategories_ids);
+    }
+
+    public function getAllLeafCategories():Collection
+    {
+        $allLeafCategories= new Collection();
+        foreach ($this->categoryAdjacencyList as $categories){
+            foreach ($categories as $category){
+                if(!$this->categoryAdjacencyList->offsetExists($category->id)){
+                    $allLeafCategories->push($category);
+                }
+            }
+        }
+        return $allLeafCategories;
     }
 
 

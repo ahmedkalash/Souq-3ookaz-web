@@ -57,7 +57,8 @@ class Product extends Model
     use Sluggable;
     protected $fillable = [
         'name_en', 'name_ar', 'price', 'stock', 'description',
-        'brand', 'status', 'category_id', 'poster_id','slug'
+        'brand', 'status', 'category_id', 'poster_id','slug',
+        'long_description'
     ];
     protected $hidden=[ 'created_at','updated_at','category_id','poster_id'];
     const POSTER = 'poster';

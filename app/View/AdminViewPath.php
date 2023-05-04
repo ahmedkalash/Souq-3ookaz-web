@@ -8,14 +8,10 @@ class AdminViewPath
     const MASTER = 'admin-end.layouts.master';
     const LOGIN = 'admin-end.auth.login';
     const PROFILE = 'admin-end.profile.profile';
-    const VIEW_PRODUCT = 'admin-end.product.view-product';
-    const BROWSE_PRODUCTS = 'admin-end.product.browse-products';
-
-    const REGISTER = 'admin-end.auth.sign-up';
-    const CART = 'admin-end.cart.cart';
-    const PAGE_NOT_FOUND = 'errors.404';
-
-
-
+    const PRODUCTS_List = 'admin-end.products.products-list';
+    const ADD_PRODUCT = 'admin-end.products.add-new-product';
+    const PRODUCT_REVIEW = 'admin-end.products.product-review';
+    const Category_List = 'admin-end.category.category-list';
+    const ADD_Category = 'admin-end.category.add-new-category';
 
 }

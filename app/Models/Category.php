@@ -30,7 +30,6 @@ use Staudenmeir\LaravelCte\Eloquent\QueriesExpressions;
  * @property-read int|null $child_count
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $children
  * @property-read int|null $children_count
- * @property-read Category|null $parent
  * @property-read \App\Models\Image|null $poster
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
@@ -97,12 +96,11 @@ class Category extends Model
         'poster_id',
         'name_en',
         'slug',
-        'parent_id'
+        'parent_id',
+        'icon_url'
     ];
     static $POSTER='poster';
     static $PRODUCTS='products';
-
-
 
 
     public static function getAllProductsForShow($category_id){

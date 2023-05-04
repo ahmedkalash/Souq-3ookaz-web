@@ -12,7 +12,10 @@ class ViewPath
     const REGISTER = 'customer-end.auth.sign-up';
     const CART = 'customer-end.cart.cart';
     const PAGE_NOT_FOUND = 'errors.404';
+    const CHECK_OUT = 'customer-end.order.checkout';
+    const ORDER_SUCCESS = 'customer-end.order.order-success';
 
-
+    //includes
+    const BREADCRUMB = 'customer-end.includes.breadcrumb-section';
 
 }

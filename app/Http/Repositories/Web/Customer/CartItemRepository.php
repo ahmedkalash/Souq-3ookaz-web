@@ -18,7 +18,7 @@ class CartItemRepository implements CartItemInterface
     {
         return[
             'amount'=>['required', 'integer','gt:0'],
-            'product_id'=>['required','integer','exists:products,id', new DoesProductStockHasEnoughAmount()],
+            'product_id'=>['required','integer','exists:products,id', new DoesProductStockHasEnoughAmount(request('amount'))],
         ];
     }
     public static function deleteCartItemRules(): array

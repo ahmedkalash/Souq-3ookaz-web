@@ -27,5 +27,6 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory, getTableNameStaticallyTrait;
+    protected $fillable=['url', 'product_id'];
 
 }

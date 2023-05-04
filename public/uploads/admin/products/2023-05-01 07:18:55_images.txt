@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=wine FoxitPhantomPDF.exe
+GenericName[en_US]=
+GenericName=
+Icon=2C54_FoxitPhantomPDF.0
+MimeType=
+Name[en_US]=Foxit PhantomPDF
+Name=Foxit PhantomPDF
+Path=/home/ahmed/.wine/drive_c/Program Files/Foxit PhantomPDF Bs v10.1.4.37651 Portable/App/ProgramFiles/
+StartupNotify=true
+StartupWMClass=foxitphantompdf.exe
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

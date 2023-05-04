@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 trait ImagesTrait{
 
+
     private function uploadImage($file, $fileNewName, $path, $oldFilePath = null)
     {
         $file->move(public_path('uploads/'.$path), $fileNewName);

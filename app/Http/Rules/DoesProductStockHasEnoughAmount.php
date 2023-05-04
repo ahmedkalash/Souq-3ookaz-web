@@ -15,7 +15,7 @@ class DoesProductStockHasEnoughAmount implements Rule
      * @return void
      */
 
-    public function __construct()
+    public function __construct(protected int $amount)
     {
         //
     }
@@ -29,18 +29,16 @@ class DoesProductStockHasEnoughAmount implements Rule
      */
     public function passes($attribute, $value)
     {
-        $product = Product::find(request('product_id'));
+        $product = Product::find($value);
         if($product){
             $stock = $product->stock;
-
             $cartItem = CartItem::where([
                 ['user_id',Auth::id()],
-                ['product_id',request('product_id')]
+                ['product_id',$value]
                 ])->get()->first();
 
             $amountInCart = $cartItem->amount ?? 0;
-            $requiredAmount = $amountInCart+request('amount');
-
+            $requiredAmount = $amountInCart+$this->amount;
             if($stock>=$requiredAmount){
                 return true;
             }

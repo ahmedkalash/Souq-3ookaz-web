@@ -546,6 +546,7 @@
 
                 <div class="col-xxl-3 col-xl-4 col-lg-5 d-none d-lg-block wow fadeInUp">
                     <div class="right-sidebar-box">
+                        {{--
                         <div class="vendor-box">
                             <div class="verndor-contain">
                                 <div class="vendor-image">
@@ -601,7 +602,7 @@
                             </div>
                         </div>
 
-                        <!-- Trending Product -->
+--}}                        <!-- Trending Product -->
                        {{-- <div class="pt-25">
                             <div class="category-menu">
                                 <h3>Trending Products</h3>

@@ -74,8 +74,12 @@ class ProductRepository implements ProductInterface
             $category_slug,$leafCategories_ids
         );
 
-        return Product::with(Product::POSTER, Product::CATEGORY)
+        $products= Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)
             ->whereIn('category_id', $leafCategories_ids)->get();
+         foreach ($products as $product){
+            $product->reviews->average_rating =number_format( $product->reviews->average('rating'), 2);
+        }
+         return $products;
     }
     public function allProducts(){
         $products=Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)->get();

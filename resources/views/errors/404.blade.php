@@ -8,7 +8,7 @@
     <meta name="description" content="Fastkart">
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="{{asset("")}}assets/images/favicon/1.png" type="image/x-icon">
     <title>404</title>
 
     <!-- Google font -->
@@ -22,23 +22,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css" />
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="{{asset("")}}assets/css/style.css">
 </head>
 
 <body>
@@ -126,7 +126,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="image-404">
-                        <img src="../assets/images/inner-page/404.png" class="img-fluid blur-up lazyload" alt="">
+                        <img src="{{asset("")}}assets/images/inner-page/404.png" class="img-fluid blur-up lazyload" alt="">
                     </div>
                 </div>
 
@@ -267,7 +267,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="{{asset("")}}assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -281,7 +281,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="{{asset("")}}assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -295,7 +295,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="{{asset("")}}assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -309,7 +309,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="{{asset("")}}assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -342,30 +342,30 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{asset("")}}assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="{{asset("")}}assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="{{asset("")}}assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{asset("")}}assets/js/bootstrap/popper.min.js"></script>
+    <script src="{{asset("")}}assets/js/bootstrap/bootstrap-notify.min.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="{{asset("")}}assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/slick-animation.min.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="{{asset("")}}assets/js/slick/slick.js"></script>
+    <script src="{{asset("")}}assets/js/slick/slick-animation.min.js"></script>
+    <script src="{{asset("")}}assets/js/slick/custom_slick.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="{{asset("")}}assets/js/feather/feather.min.js"></script>
+    <script src="{{asset("")}}assets/js/feather/feather-icon.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="{{asset("")}}assets/js/script.js"></script>
 </body>
 
 </html>

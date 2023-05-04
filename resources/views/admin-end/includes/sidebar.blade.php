@@ -3,7 +3,7 @@
     <div>
         <div class="logo-wrapper logo-wrapper-center">
             <a href="{{route('admin.home.show')}}" data-bs-original-title="" title="">
-                <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
+                <img class="img-fluid for-white" src="{{asset("")}}admin/assets/images/logo/full-white.png" alt="logo">
             </a>
             <div class="back-btn">
                 <i class="fa fa-angle-left"></i>
@@ -14,8 +14,8 @@
         </div>
         <div class="logo-icon-wrapper">
             <a href="index.html">
-                <img class="img-fluid main-logo main-white" src="assets/images/logo/logo.png" alt="logo">
-                <img class="img-fluid main-logo main-dark" src="assets/images/logo/logo-white.png"
+                <img class="img-fluid main-logo main-white" src="{{asset("")}}admin/assets/images/logo/logo.png" alt="logo">
+                <img class="img-fluid main-logo main-dark" src="{{asset("")}}admin/assets/images/logo/logo-white.png"
                      alt="logo">
             </a>
         </div>
@@ -42,11 +42,11 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="products.html">Prodcts</a>
+                                <a href="{{route('admin.productList.show')}}">Prodcts</a>
                             </li>
 
                             <li>
-                                <a href="add-new-product.html">Add New Products</a>
+                                <a href="{{route('admin.product.add.show')}}">Add New Products</a>
                             </li>
                         </ul>
                     </li>
@@ -58,11 +58,11 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="category.html">Category List</a>
+                                <a href="{{route('admin.categoryList.show')}}">Category List</a>
                             </li>
 
                             <li>
-                                <a href="add-new-category.html">Add New Category</a>
+                                <a href="{{route("admin.category.add.show")}}">Add New Category</a>
                             </li>
                         </ul>
                     </li>
@@ -178,7 +178,7 @@
                     </li>
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.product.review.show')}}">
                             <i class="ri-star-line"></i>
                             <span>Product Review</span>
                         </a>
