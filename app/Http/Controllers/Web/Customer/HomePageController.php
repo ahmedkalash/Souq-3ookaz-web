@@ -11,7 +11,6 @@ use App\View\ViewPath;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-use function App\Http\Helper\cartItems;
 
 class HomePageController extends Controller
 {
@@ -26,8 +25,7 @@ class HomePageController extends Controller
         $products = $this->productRepository->allProducts();
         return view(
             ViewPath::HOME_PAGE,
-            compact('products'),
-            mergeData: cartItems()
+            compact('products')
         );
     }
 }

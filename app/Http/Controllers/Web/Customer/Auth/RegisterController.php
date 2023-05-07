@@ -9,7 +9,7 @@ use App\Http\Requests\Web\Customer\Auth\RegisterRequest;
 use App\Providers\RouteServiceProvider;
 use App\View\ViewPath;
 use Illuminate\Support\Facades\Auth;
-use function App\Http\Helper\cartItems;
+
 
 class RegisterController extends Controller
 {
@@ -20,8 +20,7 @@ class RegisterController extends Controller
 
     public function showRegisterPage(){
         return view(
-            ViewPath::REGISTER,
-            mergeData: cartItems()
+            ViewPath::REGISTER
         );
     }
     public function create(RegisterRequest $request)

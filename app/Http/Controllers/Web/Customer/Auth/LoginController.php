@@ -8,7 +8,7 @@ use App\Http\Interfaces\Web\Customer\CategoryInterface;
 use App\Http\Requests\Web\Customer\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\View\ViewPath;
-use function App\Http\Helper\cartItems;
+
 
 class LoginController extends Controller
 {
@@ -20,8 +20,7 @@ class LoginController extends Controller
     public function showLoginPage(){
         session()->put('previousUrl', url()->previous());
         return view(
-            ViewPath::LOGIN,
-            mergeData: cartItems()
+            ViewPath::LOGIN
         );
     }
 

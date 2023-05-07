@@ -9,7 +9,7 @@ use App\Models\Order;
 use App\Models\ShippingInfo;
 use App\View\ViewPath;
 use Illuminate\Http\Request;
-use function App\Http\Helper\cartItems;
+
 
 class OrderController extends Controller
 {
@@ -21,8 +21,7 @@ class OrderController extends Controller
     public function showCheckoutPage(){
 
         return view(
-            ViewPath::CHECK_OUT,
-            mergeData: cartItems()
+            ViewPath::CHECK_OUT
         );
     }
     public function checkout(CheckOutRequest $request){
@@ -32,8 +31,8 @@ class OrderController extends Controller
         //$shippingInfo  = ShippingInfo::where('')
         return view(
             ViewPath::ORDER_SUCCESS,
-            compact('order'),
-            mergeData: cartItems()
+            compact('order')
+
         );
     }
      public function success(Request $request ){
@@ -41,8 +40,7 @@ class OrderController extends Controller
         $order->load('shipping_info');
         return view(
             ViewPath::ORDER_SUCCESS,
-             compact('order'),
-            mergeData: cartItems()
+             compact('order')
         );
     }
 
