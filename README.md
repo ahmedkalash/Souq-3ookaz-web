@@ -71,3 +71,6 @@ Enlisted below are all the major functions supported by the online shopping syst
 
     
 See more in /assets/images folder
+
+## Credits:
+▪ Logo was made by **Mohamed Asker**
