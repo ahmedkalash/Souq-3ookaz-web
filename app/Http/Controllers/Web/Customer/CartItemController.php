@@ -12,7 +12,6 @@ use App\Http\Requests\deleteCartItemRequest;
 use App\View\ViewPath;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use function App\Http\Helper\cartItems;
 
 class CartItemController extends Controller
 {

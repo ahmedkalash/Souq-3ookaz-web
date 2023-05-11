@@ -94,7 +94,7 @@ Route::controller(\App\Http\Controllers\Web\Customer\OrderController::class)
     ->group(function (){
         Route::get('/order/checkout','showCheckoutPage')->name('checkout.show');
         Route::post('/order','checkout')->name('checkout');
-        Route::get('/checkout','success');
+        //Route::get('/checkout','success');
     });
 
 

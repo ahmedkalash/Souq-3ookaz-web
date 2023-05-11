@@ -15,7 +15,7 @@ use App\Models\Category;
 use App\Models\ProductInfo;
 use App\Models\ProductReview;
 use App\View\ViewPath;
-use function App\Http\Helper\cartItems;
+
 
 class ProductController extends Controller
 {
@@ -29,8 +29,7 @@ class ProductController extends Controller
         $product = $this->productRepository->getProductById($request, $id);
         return view(
             ViewPath::VIEW_PRODUCT,
-            compact('product'),
-            cartItems()
+            compact('product')
         );
     }
     public function showProductBySlug(GetProductBySlugRequest $request, $slug){
@@ -38,8 +37,7 @@ class ProductController extends Controller
 
        return view(
             ViewPath::VIEW_PRODUCT,
-            compact('product'),
-            cartItems()
+            compact('product')
         );
     }
     public function showProductsByCategoryID(GetProductsByCategoryIDRequest $request, $category_id){
@@ -47,8 +45,7 @@ class ProductController extends Controller
         $category = Category::find($category_id);
        return view(
             ViewPath::BROWSE_PRODUCTS,
-            compact('products', 'category'),
-            cartItems()
+            compact('products', 'category')
         );
     }
     public function showProductsByCategorySlug(GetProductsByCategorySlugRequest $request, $category_slug){
@@ -56,16 +53,14 @@ class ProductController extends Controller
         $category = Category::whereSlug($category_slug)->get()->first();
        return view(
             ViewPath::BROWSE_PRODUCTS,
-            compact('products', 'category'),
-            cartItems()
+            compact('products', 'category')
         );
     }
     public function allProducts(){
         $products = $this->productRepository->allProducts();
         return view(
             ViewPath::BROWSE_PRODUCTS,
-            compact('products'),
-            cartItems()
+            compact('products')
         );
     }
 

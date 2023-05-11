@@ -27,7 +27,7 @@ class ProductReviewRepository implements ProductReviewInterface
                 'comment'=>$request->comment,
             ]);
         }else{
-            $productReview->create([
+            ProductReview::create([
                 'user_id'=>Auth::id(),
                 'product_id'=>$request->product_id,
                 'rating'=>$request->rating,
