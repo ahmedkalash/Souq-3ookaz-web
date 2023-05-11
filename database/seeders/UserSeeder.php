@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\ShippingInfo;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-class ShippingInfoSeeder extends Seeder
+
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ShippingInfoSeeder extends Seeder
      */
     public function run()
     {
-       ShippingInfo::factory(50)->create();
+        User::factory(100)->create(['role'=>'customer']);
     }
 }

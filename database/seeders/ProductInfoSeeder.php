@@ -16,13 +16,7 @@ class ProductInfoSeeder extends Seeder
      */
     public function run()
     {
-       $faker = \Faker\Factory::create();
-        for($i=0;$i<200;$i++){
-        ProductInfo::create( [
-            'product_id' => Product::inRandomOrder()->first()->id,
-            'key' => $faker->word(),
-            'value' => $faker->word(),
-            ]);
-         }
+       ProductInfo::factory(5)
+           ->create();
     }
 }

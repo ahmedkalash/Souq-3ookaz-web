@@ -17,15 +17,6 @@ class ProductReviewSeeder extends Seeder
      */
     public function run()
     {
-        $faker = FakerFactory::create();
-        for($i=0;$i<200;$i++){
-        ProductReview::create( [
-            'product_id' => Product::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
-            'rating' => $faker->numberBetween(1, 5),
-            'comment' => $faker->paragraph(),
-            ]);
-         }
 
     }
 }

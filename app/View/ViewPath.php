@@ -17,5 +17,6 @@ class ViewPath
 
     //includes
     const BREADCRUMB = 'customer-end.includes.breadcrumb-section';
-
+    const BROWSE_PRODUCTS_SECTION = 'customer-end.includes.browse-products-section';
+    const PRODUCT_AVERAGE_RATING = 'customer-end.includes.product-average-rating';
 }

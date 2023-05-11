@@ -55,14 +55,12 @@
                     <div class="footer-logo">
                         <div class="theme-logo">
                             <a href="index.html">
-                                <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                <img src="{{asset("")}}assets/images/logo/9.jpeg" class="blur-up lazyload" alt="">
                             </a>
                         </div>
 
                         <div class="footer-logo-contain">
-                            <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
-                                perfect place for a couple.</p>
-
+                            <p></p>
                             <ul class="address">
                                 <li>
                                     <i data-feather="home"></i>
@@ -70,7 +68,7 @@
                                 </li>
                                 <li>
                                     <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">support@fastkart.com</a>
+                                    <a href="javascript:void(0)">support@SouqOkaz.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -172,7 +170,7 @@
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Email Address :</h6>
-                                        <h5>fastkart@hotmail.com</h5>
+                                        <h5>SouqOkaz@hotmail.com</h5>
                                     </div>
                                 </div>
                             </li>
@@ -202,7 +200,7 @@
 
         <div class="sub-footer section-small-space">
             <div class="reserve">
-                <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
+                <h6 class="text-content">©2022 Souq Okaz All rights reserved</h6>
             </div>
 
             <div class="payment">

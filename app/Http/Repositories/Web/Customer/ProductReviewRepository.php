@@ -2,8 +2,8 @@
 
 namespace App\Http\Repositories\Web\Customer;
 use App\Http\Interfaces\Web\Customer\ProductReviewInterface;
+use App\Models\Product;
 use App\Models\ProductReview;
-use App\Rules\Web\Customer\UniqueProductReviewPerUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +19,12 @@ class ProductReviewRepository implements ProductReviewInterface
 
     public function addReview($request){
         $productReview = ProductReview::where([['product_id','=',$request->product_id],['user_id','=',Auth::id()]])->get()->first();
+
+        Product::whereId($request->product_id)
+        ->update([
+            'average_rating'=>number_format( ProductReview::average('rating'), 2)
+        ]);
+
         if($productReview){
             $productReview->update([
                 'user_id'=>Auth::id(),

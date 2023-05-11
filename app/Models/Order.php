@@ -14,9 +14,13 @@ class Order extends Model
         'shipping_info_id'  ,
         'status'=>'pending'
     ];
-    public function shipping_info()
+    public function ShippingInfo()
     {
         return $this->belongsTo(ShippingInfo::class);
+    }
+    public function orderItem()
+    {
+        return $this->hasMany(OrderItems::class);
     }
 }
 
