@@ -332,75 +332,25 @@
                                                                 @include('customer-end.includes.product-average-rating')
                                                             </ul>
                                                         </div>
-                                                        <h6 class="ms-3">{{$product->reviews->average_rating}} Out Of 5</h6>
+                                                        <h6 class="ms-3">{{$product->average_rating}} Out Of 5</h6>
                                                     </div>
 
                                                     <div class="rating-box">
                                                         <ul>
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>5 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: {{$product->reviews->percentages[5]??0}}%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            {{$product->reviews->percentages[5]??0}}%
+                                                            @foreach(range(5,1) as $i)
+                                                                <li>
+                                                                    <div class="rating-list">
+                                                                        <h5>{{$i }} Star</h5>
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar" role="progressbar"
+                                                                                 style="width: {{$product->reviews->percentages[$i]??0}}%" aria-valuenow="100"
+                                                                                 aria-valuemin="0" aria-valuemax="100">
+                                                                                {{$product->reviews->percentages[$i]??0}}%
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>4 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: {{$product->reviews->percentages[4]??0}}%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            {{$product->reviews->percentages[4]??0}}%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>3 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: {{$product->reviews->percentages[3]??0}}%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            {{$product->reviews->percentages[3]??0}}%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>2 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: {{$product->reviews->percentages[2]??0}}%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            {{$product->reviews->percentages[2]??0}}%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>1 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: {{$product->reviews->percentages[1]??0}}%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            {{$product->reviews->percentages[1]??0}}%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                                </li>
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>

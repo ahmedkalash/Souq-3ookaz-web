@@ -14,16 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('product_reviews', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('product_id')->index();
             $table->unsignedBigInteger('user_id');
             $table->unsignedTinyInteger('rating');
             $table->text('comment')->nullable();
-            $table->unique(['user_id', 'product_id']); // Unique constraint
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unique(['user_id', 'product_id']);
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('product_reviews');
     }
 };

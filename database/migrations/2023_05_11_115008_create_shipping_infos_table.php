@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('shipping_infos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('customer_full_name');
             $table->string('address_1');
             $table->string('address_2')->nullable();

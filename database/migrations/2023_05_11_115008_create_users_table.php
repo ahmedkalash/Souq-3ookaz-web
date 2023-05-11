@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +14,17 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name',10);
-            $table->string('last_name',10);
-            $table->string('email',50)->unique()->index();
+            $table->bigIncrements('id');
+            $table->string('first_name', 100);
+            $table->string('last_name', 100);
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('phone',15)->unique()->index();
-
+            $table->string('phone', 50)->unique();
+            $table->enum('role', ['customer', 'admin', 'vendor']);
+            $table->string('image_url')->default('https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png');
         });
     }
 
@@ -36,4 +37,4 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-}
+};

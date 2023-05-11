@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                     <div class="image-contain">
-                        <img src="../assets/images/inner-page/sign-up.png" class="img-fluid" alt="">
+                        <img src="https://thumbs.dreamstime.com/z/businessman-filling-online-registration-form-s-hand-laptop-147831246.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="text" class="form-control" id="firstname" placeholder="Full Name" name="first_name" required>
+                                        <input type="text" class="form-control" id="firstname" placeholder="Full Name" name="first_name" value="{{ old('first_name') }}" required>
                                         <label for="firstname">First Name</label>
                                     </div>
                                     @error('first_name')
@@ -102,7 +102,7 @@
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="text" class="form-control" id="lastname" placeholder="Full Name" name="last_name" required>
+                                        <input type="text" class="form-control" id="lastname" placeholder="Full Name" name="last_name" value="{{ old('last_name') }}" required>
                                         <label for="lastname">Last Name</label>
                                     </div>
                                     @error('last_name')
@@ -112,7 +112,7 @@
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" required>
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="{{ old('email') }}"  required>
                                         <label for="email">Email Address</label>
                                         @error('email')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -122,7 +122,7 @@
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" name="phone" required>
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" name="phone" value="{{ old('phone') }}" required>
                                         <label for="phone">Phone Number</label>
                                         @error('phone')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -216,86 +216,12 @@
     </section>
     <!-- log in section end -->
 
-    <!-- Tap to top start -->
-    <div class="theme-option">
-        <div class="setting-box">
-            <button class="btn setting-button">
-                <i class="fa-solid fa-gear"></i>
-            </button>
-
-            <div class="theme-setting-2">
-                <div class="theme-box">
-                    <ul>
-                        <li>
-                            <div class="setting-name">
-                                <h4>Color</h4>
-                            </div>
-                            <div class="theme-setting-button color-picker">
-                                <form class="form-control">
-                                    <label for="colorPick" class="form-label mb-0">Theme Color</label>
-                                    <input type="color" class="form-control form-control-color" id="colorPick" value="#0da487" title="Choose your color">
-                                </form>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="setting-name">
-                                <h4>Dark</h4>
-                            </div>
-                            <div class="theme-setting-button">
-                                <button class="btn btn-2 outline" id="darkButton">Dark</button>
-                                <button class="btn btn-2 unline" id="lightButton">Light</button>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="setting-name">
-                                <h4>RTL</h4>
-                            </div>
-                            <div class="theme-setting-button rtl">
-                                <button class="btn btn-2 rtl-unline">LTR</button>
-                                <button class="btn btn-2 rtl-outline">RTL</button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="back-to-top">
-            <a id="back-to-top" href="#">
-                <i class="fas fa-chevron-up"></i>
-            </a>
-        </div>
-    </div>
-    <!-- Tap to top end -->
 
     <!-- Bg overlay Start -->
     <div class="bg-overlay"></div>
     <!-- Bg overlay End -->
 
-    <!-- latest jquery-->
-    <script src="{{asset("assets/js/jquery-3.6.0.min.js")}}"></script>
 
-    <!-- Bootstrap js-->
-    <script src="{{asset("assets/js/bootstrap/bootstrap.bundle.min.js")}}"></script>
-    <script src="{{asset("assets/js/bootstrap/popper.min.js")}}"></script>
-
-    <!-- feather icon js-->
-    <script src="{{asset("assets/js/feather/feather.min.js" )}}"></script>
-    <script src="{{asset("assets/js/feather/feather-icon.js")}}"></script>
-
-    <!-- Slick js-->
-    <script src="{{asset("assets/js/slick/slick.js")}}"></script>
-    <script src="{{asset("assets/js/slick/slick-animation.min.js")}}"></script>
-    <script src="{{asset("assets/js/slick/custom_slick.js")}}"></script>
-
-    <!-- Lazyload Js -->
-    <script src="{{asset("assets/js/lazysizes.min.js")}}"></script>
-
-    <!-- script js -->
-    <script src="{{asset("assets/js/script.js")}}"></script>
-    <!-- thme setting js -->
-    <script src="../assets/js/theme-setting.js"></script>
 @endsection
 
 

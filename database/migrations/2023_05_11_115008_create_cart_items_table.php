@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\Product;
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartItemsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -16,16 +14,13 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('amount', false,true);
+            $table->unsignedInteger('amount');
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('product_id')->references('id')->on(Product::getTableName())
-            ->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign('user_id')->references('id')->on(User::getTableName())
-            ->cascadeOnDelete()->cascadeOnUpdate();
-            $table->index('user_id');
+            $table->unsignedBigInteger('user_id')->index();
+
+            $table->unique(['product_id', 'user_id'], 'cart_items_unique');
         });
     }
 
@@ -38,4 +33,4 @@ class CreateCartItemsTable extends Migration
     {
         Schema::dropIfExists('cart_items');
     }
-}
+};

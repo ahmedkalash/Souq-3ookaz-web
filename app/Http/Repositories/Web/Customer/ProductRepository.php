@@ -4,6 +4,7 @@ namespace App\Http\Repositories\Web\Customer;
 use App\Http\Interfaces\Web\Customer\CategoryInterface;
 use App\Http\Interfaces\Web\Customer\ProductInterface;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -36,18 +37,15 @@ class ProductRepository implements ProductInterface
             Product::INFO
         ])->select('id', 'name_en','name_ar', 'price',
             'stock', 'description', 'brand', 'status',
-            'category_id','stock','slug','long_description'
+            'category_id','stock','slug','long_description','average_rating'
         )->where('products.id', $id)->first();
 
-        $product->reviews->average_rating =number_format( $product->reviews->average('rating')??0, 2);
         // Group the reviews by rating
         $grouped = $product->reviews->groupBy('rating');
         // Calculate the percentage for each rating
         $product->reviews->percentages = $grouped->map(function ($group) use ($product) {
             return $product->reviews->count()==0? 0 : number_format(($group->count() / $product->reviews->count() * 100), 2);
         })->toArray();
-        $product->reviews->groupBy('user_id');
-
         return $product;
 
     }
@@ -57,36 +55,29 @@ class ProductRepository implements ProductInterface
         return $this->getProductById($request,Product::where('slug',$slug)->first()->id);
     }
 
-    public function getProductsByCategoryID(int $category_id): Collection
+    public function getProductsByCategoryID(int $category_id)
     {
         $leafCategories_ids=[];
         $this->categoryRepository->getLeafCategoriesByID(
             $category_id,$leafCategories_ids
         );
 
-        return Product::with(Product::POSTER, Product::CATEGORY)
-            ->whereIn('category_id', $leafCategories_ids)->get();
-    }
-    public function getProductsByCategorySlug(string $category_slug): Collection
-    {
-        $leafCategories_ids=[];
-        $this->categoryRepository->getLeafCategoriesBySlug(
-            $category_slug,$leafCategories_ids
-        );
+        return Product::with(Product::POSTER, Product::CATEGORY, Product::REVIEWS)
+            ->whereIn('category_id', $leafCategories_ids)->Paginate()->withQueryString();
 
-        $products= Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)
-            ->whereIn('category_id', $leafCategories_ids)->get();
-         foreach ($products as $product){
-            $product->reviews->average_rating =number_format( $product->reviews->average('rating'), 2);
-        }
-         return $products;
     }
+    public function getProductsByCategorySlug(string $category_slug)
+    {
+        return $this->getProductsByCategoryID(Category::whereSlug($category_slug)->get()->first()->id);
+    }
+
     public function allProducts(){
-        $products=Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)->get();
-        foreach ($products as $product){
-            $product->reviews->average_rating =number_format( $product->reviews->average('rating'), 2);
-        }
-        return $products;
+
+//        dd(Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)->Paginate()
+//            ->links());
+
+        return Product::with(Product::POSTER, Product::CATEGORY,Product::REVIEWS)
+            ->Paginate()->withQueryString();
     }
 
 

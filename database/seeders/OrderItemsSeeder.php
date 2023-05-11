@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\ShippingInfo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-class ShippingInfoSeeder extends Seeder
+use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+
+class OrderItemsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +18,6 @@ class ShippingInfoSeeder extends Seeder
      */
     public function run()
     {
-       ShippingInfo::factory(50)->create();
+
     }
 }

@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->decimal('total_price',unsigned:true);
-            $table->foreignId('shipping_info_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->unsignedBigInteger('user_id')->index('orders_user_id_foreign');
+            $table->unsignedDecimal('total_price');
+            $table->unsignedBigInteger('shipping_info_id')->index('orders_shipping_info_id_foreign');
             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
         });
     }

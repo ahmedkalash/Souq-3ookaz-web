@@ -28,21 +28,20 @@ class OrderController extends Controller
         $order =$this->orderRepository->checkout($request);
         $order->load('shipping_info');
         $this->order = $order;
-        //$shippingInfo  = ShippingInfo::where('')
         return view(
             ViewPath::ORDER_SUCCESS,
             compact('order')
 
         );
     }
-     public function success(Request $request ){
-         $order = Order::find(130);
-        $order->load('shipping_info');
-        return view(
-            ViewPath::ORDER_SUCCESS,
-             compact('order')
-        );
-    }
+//     public function success(Request $request ){
+//         $order = Order::find(130);
+//        $order->load('shipping_info');
+//        return view(
+//            ViewPath::ORDER_SUCCESS,
+//             compact('order')
+//        );
+//    }
 
 
 

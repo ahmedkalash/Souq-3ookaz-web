@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryRepository implements CategoryInterface
 {
-    protected Collection $categoryAdjacencyList;
+    public Collection $categoryAdjacencyList;
     public function __construct()
     {
-        $this->categoryAdjacencyList =  Category::all()->groupBy('parent_id');
+        $this->categoryAdjacencyList =  Category::all()->groupBy('parent_id')?? new Collection;
     }
 
     public static function validateCategoryIdRules()
@@ -30,9 +30,9 @@ class CategoryRepository implements CategoryInterface
         ];
     }
 
-    public function getAllCategoriesHierarchy(): ?Collection
+    public function getAllCategoriesHierarchy(): Collection
     {
-        $rootCategories = $this->categoryAdjacencyList->get(null);
+        $rootCategories = $this->categoryAdjacencyList->get(null,new Collection());
         foreach ($rootCategories as $rootCategory){
             $this->nestCategoryChildren($rootCategory);
         }
@@ -62,6 +62,7 @@ class CategoryRepository implements CategoryInterface
     public function getLeafCategoriesBySlug(string $Category_Slug, array &$leafCategories_ids):void
     {
         $category_id = Category::where('slug', $Category_Slug)->get()->first()->id;
+
 
         $this->getLeafCategoriesByID($category_id, $leafCategories_ids);
     }
