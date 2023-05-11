@@ -53,3 +53,21 @@ Enlisted below are all the major functions supported by the online shopping syst
     ▪ delete a product Review
     ▪ View Account Details
     ▪ Edit Account Details
+    
+  
+## Some Pictures
+
+### Home page:
+   <img src="/assets/images/home_page.png">
+
+## Product view:
+  <img src="/assets/images/product-view.png">
+  
+ ## Shopping cart:
+  <img src="/assets/images/shopping-Cart .png">
+  
+ ## Admin products list:
+  <img src="/assets/images/admin-products-list .png">
+
+    
+See more in /assets/images folder
