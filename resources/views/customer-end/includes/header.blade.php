@@ -313,7 +313,7 @@
                                 @foreach($categories as $category)
                                     <li class="onhover-category-list">
                                         <a href="{{route('product.showByCategorySlug',$category->slug)}}" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="">
+                                            <img src="{{$category->icon_url}}" alt="">
                                             <h6>{{$category->name_en??null}}</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>

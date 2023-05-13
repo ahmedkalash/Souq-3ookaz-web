@@ -11,6 +11,8 @@ use App\Http\Controllers\Web\TestController;
 use App\Http\Middleware\Customer\IsCustomerOrGuest;
 use App\Http\Middleware\LogoutFromCurrentRole;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -94,12 +96,16 @@ Route::controller(\App\Http\Controllers\Web\Customer\OrderController::class)
     ->group(function (){
         Route::get('/order/checkout','showCheckoutPage')->name('checkout.show');
         Route::post('/order','checkout')->name('checkout');
-        //Route::get('/checkout','success');
+        Route::get('/checkout','success');
     });
 
 
 
-Route::get('test',[TestController::class, 'index']);
+Route::get('test/{id}',[TestController::class, 'index']);
 
+
+Route::get('/test/products/{product}/images/{image}', function ( Product $product, \App\Models\Image $image) {
+    return $image;
+})->scopeBindings() ;
 
 

@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+    <link rel="icon" href="{{asset("assets/images/logo/9.jpeg")}}" type="image/x-icon">
     @yield('head')
 </head>
 

@@ -26,7 +26,7 @@ class OrderController extends Controller
     }
     public function checkout(CheckOutRequest $request){
         $order =$this->orderRepository->checkout($request);
-        $order->load('shipping_info');
+        $order->load('shippingInfo',"orderItem");
         $this->order = $order;
         return view(
             ViewPath::ORDER_SUCCESS,
@@ -34,14 +34,15 @@ class OrderController extends Controller
 
         );
     }
-//     public function success(Request $request ){
-//         $order = Order::find(130);
-//        $order->load('shipping_info');
-//        return view(
-//            ViewPath::ORDER_SUCCESS,
-//             compact('order')
-//        );
-//    }
+     public function success(Request $request ){
+         $order = Order::find(30);
+         $order->load('shippingInfo',"orderItem");
+      // dd($order->orderItem);
+        return view(
+            ViewPath::ORDER_SUCCESS,
+             compact('order')
+        );
+    }
 
 
 

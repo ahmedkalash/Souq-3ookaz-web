@@ -10,7 +10,7 @@
             <div class="toggle-sidebar">
                 <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
                 <a href="{{route('admin.home.show')}}">
-                    <img src="{{asset("")}}admin/assets/images/logo/1.png" class="img-fluid" alt="">
+                    <img src="{{asset("assets/images/logo/9.jpeg")}}" class="img-fluid" alt="">
                 </a>
             </div>
         </div>

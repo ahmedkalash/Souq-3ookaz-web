@@ -1,6 +1,5 @@
 @extends(\App\View\ViewPath::MASTER)
 @section('custom-head')
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
     <title>{{$category->name_en?? 'Browse Products'}}</title>
 @endsection
 @section('content')

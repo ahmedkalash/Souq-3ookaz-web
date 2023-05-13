@@ -1,10 +1,7 @@
 @extends(\App\View\ViewPath::MASTER)
 
 @section('custom-head')
-
-    <link rel="icon" href="{{asset("")}}assets/images/favicon/1.png" type="image/x-icon">
     <title>{{$product->name_en}}</title>
-
 @endsection
 
 @section('content')

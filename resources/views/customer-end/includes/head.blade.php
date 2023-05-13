@@ -4,7 +4,7 @@
 <meta name="description" content="Fastkart">
 <meta name="keywords" content="Fastkart">
 <meta name="author" content="Fastkart">
-
+<link rel="icon" href="../assets/images/logo/8.jpeg" type="image/x-icon">
 @yield('custom-head')
 
 <!-- Google font -->
