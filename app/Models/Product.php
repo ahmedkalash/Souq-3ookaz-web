@@ -55,6 +55,8 @@ class Product extends Model
     use ProductRelationshipsTrait, getTableNameStaticallyTrait;
     use HasFactory;
     use Sluggable;
+
+    protected $with=['poster'];
     protected $fillable = [
         'name_en', 'name_ar', 'price', 'stock', 'description',
         'brand', 'status', 'category_id', 'poster_id','slug',

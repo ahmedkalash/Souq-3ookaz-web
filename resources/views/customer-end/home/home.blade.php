@@ -1,7 +1,6 @@
 @extends(\App\View\ViewPath::MASTER)
 
 @section('custom-head')
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
     <title>سوق عكاظ</title>
 @endsection
 

@@ -1,7 +1,6 @@
 @extends('customer-end.layouts.master')
 
 @section('custom-head')
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
     <title>Cart</title>
 @endsection
 

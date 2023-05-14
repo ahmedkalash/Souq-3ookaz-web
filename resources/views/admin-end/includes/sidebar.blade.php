@@ -3,7 +3,7 @@
     <div>
         <div class="logo-wrapper logo-wrapper-center">
             <a href="{{route('admin.home.show')}}" data-bs-original-title="" title="">
-                <img class="img-fluid for-white" src="{{asset("")}}admin/assets/images/logo/full-white.png" alt="logo">
+                <img class="img-fluid for-white" src="{{asset("assets/images/logo/9.jpeg")}}" alt="logo">
             </a>
             <div class="back-btn">
                 <i class="fa fa-angle-left"></i>
@@ -198,7 +198,7 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="profile-setting.html">Profile Setting</a>
+                                <a href="{{route("admin.profile.show")}}">Profile Setting</a>
                             </li>
                         </ul>
                     </li>

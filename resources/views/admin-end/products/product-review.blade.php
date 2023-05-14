@@ -4,9 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="{{asset("admin")}}/assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset("admin")}}/assets/images/favicon.png" type="image/x-icon">
-    <title>Admin Product Review</title>
+
+     <title>Admin Product Review</title>
 
     <!-- Google font-->
     <link
@@ -110,9 +109,11 @@
                                         </tr>
                                     @endforeach
 
-
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="custome-pagination">
+                                {!! $productReviews->links('vendor.pagination.bootstrap-5') !!}
                             </div>
                         </div>
                     </div>

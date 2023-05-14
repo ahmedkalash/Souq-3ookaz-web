@@ -47,7 +47,7 @@ class ProductController extends Controller
          return redirect()->back();
     }
     public function showProductReview(){
-        $productReviews = ProductReview::with('user','product')->get();
+        $productReviews = ProductReview::with('user','product')->paginate();
         return view(
             AdminViewPath::PRODUCT_REVIEW,
             compact('productReviews')

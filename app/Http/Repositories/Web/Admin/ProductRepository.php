@@ -45,7 +45,7 @@ class ProductRepository implements ProductInterface
 
     public function allProducts()
     {
-        return Product::with(Product::POSTER, Product::CATEGORY)->get();
+        return Product::with(Product::POSTER, Product::CATEGORY)->paginate();
     }
 
     public function deleteProduct($request)

@@ -8,14 +8,18 @@ use App\Http\Requests\test;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductReview;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
 
-    public function index(   )
+    public function index(Request $request, $eee,)
     {
+        dump($request);
+        dd($eee);
 
 
 //
